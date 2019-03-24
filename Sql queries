@@ -1,0 +1,27 @@
+CREATE DATABASE comradedatabase
+  WITH OWNER = comradeuser
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'ru_RU.UTF-8'
+       LC_CTYPE = 'ru_RU.UTF-8'
+       CONNECTION LIMIT = 10;
+
+CREATE TABLE public.movies
+(
+  id integer NOT NULL DEFAULT nextval('movies_sq'::regclass),
+  title character varying(80),
+  slogan character varying(80),
+  budget integer,
+  fees integer,
+  rating character varying(10),
+  genre character varying(10)[],
+  creation_date date,
+  CONSTRAINT movies_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.movies
+  OWNER TO comradeuser;
+
+
